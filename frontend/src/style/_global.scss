@@ -1,0 +1,137 @@
+@use 'var';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Ubuntu';
+  font-size: 0;
+  background-color: var.$light-color;
+}
+
+main {
+  overflow-y: auto;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn-reset {
+  border: none;
+  padding: 1em 1.5em;
+  border-radius: var.$min-border-radius;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.input-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var.$container-offset;
+  max-width: var.$container-width;
+}
+
+.flex {
+  display: flex;
+}
+
+.fill-button {
+  color: var.$light-color;
+  background-color: var.$brand-color;
+  transition: background-color;
+  transition-duration: var.$transition-duration;
+  transition-timing-function: var.$transition-timing-function;
+
+  &:focus-visible,
+  &:hover {
+    background-color: var.$brand-color-light;
+    outline: none;
+  }
+
+  &:active {
+    background-color: var.$brand-color-dark;
+  }
+
+  &:disabled {
+    background-color: var.$border-color;
+  }
+}
+
+.stroke-button {
+  color: var.$brand-color;
+  background-color: var.$light-color;
+  border: 2px solid var.$brand-color;
+}
+
+.input {
+  padding: 10px 16px;
+  border: 1px solid var.$border-color;
+  border-radius: var.$min-border-radius;
+  color: var.$text-color;
+  font-size: 1em;
+  line-height: 1.5em;
+  transition: border-color;
+  transition-duration: var.$transition-duration;
+  transition-timing-function: var.$transition-timing-function;
+
+  &-long {
+    width: 300px;
+  }
+
+  &-short {
+    width: 134px;
+  }
+
+  &::placeholder {
+    color: var.$placeholder-color;
+  }
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    border-color: var.$brand-color;
+    background-color: var.$input-hover-bg;
+  }
+}
+
+.error-display {
+  position: absolute;
+  top: -20px;
+  left: 84px;
+  opacity: 0;
+  transition: opacity;
+  transition-duration: var.$transition-duration;
+  transition-timing-function: var.$transition-timing-function;
+}
