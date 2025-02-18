@@ -4,3 +4,103 @@
 .app {
   font-size: 16px;
 }
+
+.header {
+  padding: 25px 0;
+  background-color: var.$brand-color;
+  box-shadow: var.$box-shadow-default;
+
+  &-container {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-buttons-wrapper {
+    align-items: center;
+    gap: 25px;
+  }
+
+  &-button {
+    font-family: Ubuntu;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25em;
+  }
+}
+
+.logo {
+  color: var.$light-color;
+  font-family: Work Sans;
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.auth {
+  height: calc(100vh - 105.5px);
+
+  &-container {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &-wrapper {
+    position: relative;
+    min-width: 500px;
+    padding: 50px 40px;
+    border-radius: var.$sections-border-radius;
+    background-color: var.$bg-light-color;
+  }
+
+  &-title {
+    margin: 0 auto;
+    margin-bottom: 35px;
+    color: var.$dark-color;
+    font-family: Work Sans;
+    font-weight: 700;
+    font-size: 34px;
+    text-align: center;
+  }
+
+  &-form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    font-family: Ubuntu;
+  }
+
+  &-form-inner {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 25px;
+  }
+
+  &-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var.$text-color;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.25em;
+
+    &.error {
+      & .input {
+        border-color: var.$error-color;
+      }
+      & .error-display {
+        color: var.$error-color;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    &.success .input {
+      border-color: var.$success-color;
+    }
+  }
+
+  &-button-wrapper {
+    padding-left: 74px;
+  }
+}

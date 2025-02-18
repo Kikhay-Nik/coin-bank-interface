@@ -129,9 +129,22 @@ a {
 .error-display {
   position: absolute;
   top: -20px;
-  left: 84px;
+  right: 84px;
+  color: var.$error-color;
   opacity: 0;
   transition: opacity;
   transition-duration: var.$transition-duration;
   transition-timing-function: var.$transition-timing-function;
+}
+
+.warning-display {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  padding: 12px 24px;
+  border: 1px solid var.$warning-color;
+  border-radius: var.$min-border-radius;
+  background-color: var.$warning-bg-color;
+  color: var.$warning-color;
+  transform: translateX(-50%);
 }
