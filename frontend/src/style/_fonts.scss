@@ -12,6 +12,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto-medium.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
 // эти два шрифта поддерживаю кирилицу
 @font-face {
   font-family: 'Work Sans';

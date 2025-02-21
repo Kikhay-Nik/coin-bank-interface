@@ -1,6 +1,6 @@
 import { el, mount, setChildren } from 'redom';
-import { createPage, createContainer } from '../DOMUtils/createPageUtils';
-import createHeader from '../DOMUtils/createHeader';
+import { createPage, createContainer } from '../../DOMUtils/createPageUtils';
+import createHeader from '../../DOMUtils/createHeader';
 import createLoginForm from './createLoginForm';
 import authoriration from './authoriration';
 
@@ -8,7 +8,7 @@ const createAuthSection = (router) => {
   const authSection = el('section.auth');
   const container = createContainer('auth-container.flex');
   const authWrapper = el('div.auth-wrapper');
-  const authTitle = el('h2.auth-title', 'Вход в аккаунт');
+  const authTitle = el('h2.auth-title.main-title', 'Вход в аккаунт');
   const authForm = createLoginForm(authoriration, router);
   setChildren(authWrapper, [authTitle, authForm]);
   mount(container, authWrapper);

@@ -16,10 +16,6 @@ body {
   background-color: var.$light-color;
 }
 
-main {
-  overflow-y: auto;
-}
-
 img {
   height: auto;
   max-width: 100%;
@@ -63,8 +59,20 @@ a {
   max-width: var.$container-width;
 }
 
+.main-title {
+  margin: 0;
+  font-family: Work Sans;
+  font-weight: 700;
+  font-size: 34px;
+}
+
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 }
 
 .fill-button {

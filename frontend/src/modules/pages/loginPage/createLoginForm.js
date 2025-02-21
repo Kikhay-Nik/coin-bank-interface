@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-newline */
 import { el, setChildren, mount, text } from 'redom';
-import { createErrorDisplayEl } from '../DOMUtils/createPageUtils';
-import inputValidate from '../utils/inputValidate';
+import { createErrorDisplayEl } from '../../DOMUtils/createPageUtils';
+import inputValidate from '../../utils/inputValidate';
 import verification from './verification';
 
 export default function createLoginForm(submitHandler, router) {

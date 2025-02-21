@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import { MAIN_URL } from '../constants/api';
+import { MAIN_URL } from '../../constants/api';
 
 export default async (login, password) => {
   try {

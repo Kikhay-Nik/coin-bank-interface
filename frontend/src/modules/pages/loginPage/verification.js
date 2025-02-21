@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import { createWarningDisplayEl } from '../DOMUtils/createPageUtils';
-import { API_ERRORS } from '../constants/api';
+import { createWarningDisplayEl } from '../../DOMUtils/createPageUtils';
+import { API_ERRORS } from '../../constants/api';
 
 export default (response, form) => {
   const formWarning = form.querySelector('.warning-display');
