@@ -13,6 +13,7 @@ import createHeader from '../../DOMUtils/createHeader';
 import sortCategory from '../../constants/sortCategory';
 import { createAccount, getAccountsData } from '../../api/apiMethods';
 import { ACCOUNTS_URL, CREATE_ACCOUNT_URL } from '../../constants/api';
+import compare from '../../utils/compareFunc';
 
 const createAccountSection = (data) => {
   let accounstData = data;
@@ -78,6 +79,11 @@ const createAccountSection = (data) => {
     classNames: {
       containerOuter: ['choices', 'input-long', 'account-sort'],
     },
+  });
+
+  choices.passedElement.element.addEventListener('choice', (event) => {
+    const sortedArr = accounstData.slice().sort(compare(event.detail.value));
+    createAccountCards(sortedArr, accountList);
   });
 
   return accountSection;

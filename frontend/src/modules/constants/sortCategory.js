@@ -1,5 +1,5 @@
 export default {
-  id: 'По номеру',
+  account: 'По номеру',
   balance: 'По балансу',
-  transaction: 'По последней транзакции',
+  'transactions[0].date': 'По последней транзакции',
 };
