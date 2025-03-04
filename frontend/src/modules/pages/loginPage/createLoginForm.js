@@ -7,14 +7,24 @@ import verification from './verification';
 export default function createLoginForm(submitHandler, router) {
   const authForm = el('form.auth-form.flex');
   const authFormInner = el('div.auth-form-inner.flex');
-  const loginLabel = el('label.auth-label');
-  const passwordLabel = el('label.auth-label');
+  const loginLabel = el('label.auth-label.label');
+  const passwordLabel = el('label.auth-label.label');
 
   const loginInput = el('input.auth-input.input.input-long', {
     placeholder: 'Введите логин',
+    id: 'username',
+    type: 'text',
+    name: 'username',
+    autocomplete: 'username',
+    required: '',
   });
   const passwordInput = el('input.auth-input.input.input-long', {
     placeholder: 'Введите пароль',
+    id: 'password',
+    type: 'password',
+    name: 'password',
+    autocomplete: 'current-password',
+    required: '',
   });
 
   const buttonWrapper = el('div.auth-button-wrapper');
@@ -60,7 +70,7 @@ export default function createLoginForm(submitHandler, router) {
       const password = passwordInput.value;
       const response = await submitHandler(login, password);
       if (verification(response, authForm)) {
-        router.navigate('/account');
+        router.navigate('/accounts');
       }
     }
   });

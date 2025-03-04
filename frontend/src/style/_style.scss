@@ -52,8 +52,6 @@
     position: relative;
     min-width: 500px;
     padding: 50px 40px;
-    border-radius: var.$sections-border-radius;
-    background-color: var.$bg-light-color;
   }
 
   &-title {
@@ -85,20 +83,6 @@
     font-size: 1em;
     font-weight: 500;
     line-height: 1.25em;
-
-    &.error {
-      & .input {
-        border-color: var.$error-color;
-      }
-      & .error-display {
-        color: var.$error-color;
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    &.success .input {
-      border-color: var.$success-color;
-    }
   }
 
   &-button-wrapper {
@@ -159,6 +143,10 @@
     & .choices__list--dropdown .choices__item--selectable.is-highlighted,
     .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
       background-color: var.$accent-color;
+    }
+
+    & .choices__list--single {
+      padding: 0 2px;
     }
   }
 
@@ -234,6 +222,106 @@
 
   &-button {
     padding: 16px 21.5px;
+    font-weight: 500;
+  }
+}
+
+.details {
+  padding-top: 44px;
+
+  &-container {
+    flex-direction: column;
+  }
+
+  &-inner {
+    flex-direction: column;
+    row-gap: 24px;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  &-title-button-wrapper {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-account-info-wrapper {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-account-title {
+    margin: 0;
+    font-family:
+      Work Sans,
+      sans-serif;
+    font-weight: 400;
+    font-size: 34px;
+  }
+
+  &-account-balance-wrrapper {
+    align-items: center;
+    justify-content: space-between;
+    min-width: 200px;
+    font-family:
+      Work Sans,
+      sans-serif;
+  }
+
+  &-account-balance-title {
+    margin-right: 20px;
+  }
+
+  &-account-balance-value {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  &-transfer {
+    max-width: 606px;
+    padding: 25px 50px;
+  }
+}
+
+.transfer {
+  &-form {
+    position: relative;
+    flex-direction: column;
+    gap: 25px;
+
+    & .warning-display {
+      top: -10px;
+      left: 38%;
+      width: max-content;
+      transform: none;
+    }
+  }
+
+  &-form-inner {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 25px;
+  }
+
+  &-input {
+    padding: 8px 16px;
+  }
+
+  &-label {
+    position: relative;
+    align-items: center;
+    gap: 18px;
+    line-height: 1.25em;
+  }
+
+  &-button-wrapper {
+    justify-content: flex-end;
+  }
+
+  &-button {
+    align-items: center;
+    gap: 10px;
+    margin-right: 138px;
     font-weight: 500;
   }
 }

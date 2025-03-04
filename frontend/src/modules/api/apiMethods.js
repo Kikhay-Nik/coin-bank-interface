@@ -1,3 +1,5 @@
+import { GET_ACCOUNT_INFO_URL, TRANSFER_FUNDS_URL } from '../constants/api';
+
 export const getAccountsData = async (url) => {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -30,6 +32,50 @@ export const createAccount = async (url) => {
         Authorization: `Basic ${token}`,
       },
     });
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getAccountById = async (id) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('Пользователь неавторизован');
+  }
+  try {
+    const response = await fetch(`${GET_ACCOUNT_INFO_URL}/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${token}`,
+      },
+    });
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
+};
+
+export const postTransferFunds = async (from, to, amount) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('Пользователь неавторизован');
+  }
+  try {
+    const response = await fetch(TRANSFER_FUNDS_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        from,
+        to,
+        amount,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${token}`,
+      },
+    });
+
     return await response.json();
   } catch (error) {
     return error;

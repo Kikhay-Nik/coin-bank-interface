@@ -1,21 +1,22 @@
-/* eslint-disable import/prefer-default-export */
 import Navigo from 'navigo';
-// import { mount, text } from 'redom';
 import createLoginPage from '../pages/loginPage/createLoginPage';
-// import { createPage } from '../DOMUtils/createPageUtils';
-// import createHeader from '../DOMUtils/createHeader';
-// import { getAccountsData } from '../api/apiMethods';
-// import { ACCOUNTS_URL } from '../constants/api';
-import createAccountPage from '../pages/accountPage/createAccountPage';
+import createAccountsPage from '../pages/accountsPage/createAccountsPage';
+import createDetailsPage from '../pages/detailsPage/createDetailsPage';
 
 const router = new Navigo('/');
 
 router.on('/', () => {
+  localStorage.removeItem('token');
   createLoginPage(router);
 });
 
-router.on('/account', () => {
-  createAccountPage();
+router.on('/accounts', () => {
+  createAccountsPage(router);
+});
+
+router.on('/details:id', (data) => {
+  const pageId = data.data.id.split(':').pop();
+  createDetailsPage(pageId, router);
 });
 
 router.resolve();

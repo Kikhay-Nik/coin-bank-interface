@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable object-curly-newline */
-import { el, mount, setChildren, svg, text } from 'redom';
+import { el, mount, setChildren, text } from 'redom';
 import Choices from 'choices.js';
 import {
   createPage,
@@ -14,8 +14,9 @@ import sortCategory from '../../constants/sortCategory';
 import { createAccount, getAccountsData } from '../../api/apiMethods';
 import { ACCOUNTS_URL, CREATE_ACCOUNT_URL } from '../../constants/api';
 import compare from '../../utils/compareFunc';
+import { plusIcon } from '../../DOMUtils/createIcons';
 
-const createAccountSection = (data) => {
+const createAccountsSection = (data, router) => {
   let accounstData = data;
   const accountSection = el('section.account');
   const container = createContainer('account-container');
@@ -32,25 +33,11 @@ const createAccountSection = (data) => {
   const newAccountButton = el(
     'button.btn-reset.fill-button.account-button.flex',
   );
-  const plusIconEl = svg(
-    'svg',
-    {
-      width: '16',
-      height: '16',
-      viewBox: '0 0 16 16',
-      fill: 'none',
-      xmlns: 'http://www.w3.org/2000/svg',
-    },
-    svg('path', {
-      d: 'M7.99999 7.69167e-06L8 8.00001M8 8.00001L8.00001 16M8 8.00001L16 8.00001M8 8.00001L0 8',
-      stroke: 'currentColor',
-      'stroke-width': '2',
-    }),
-  );
+  const plusIconEl = plusIcon;
   const iconWrapper = el('span.account-icon-wrapper.flex');
 
   const accountList = el('div.account-card-wrapper.grid');
-  createAccountCards(accounstData, accountList);
+  createAccountCards(accounstData, accountList, router);
 
   newAccountButton.addEventListener('click', () => {
     createAccount(CREATE_ACCOUNT_URL).then(async () => {
@@ -83,17 +70,17 @@ const createAccountSection = (data) => {
 
   choices.passedElement.element.addEventListener('choice', (event) => {
     const sortedArr = accounstData.slice().sort(compare(event.detail.value));
-    createAccountCards(sortedArr, accountList);
+    createAccountCards(sortedArr, accountList, router);
   });
 
   return accountSection;
 };
 
-export default async () => {
-  const accountData = await getAccountsData(ACCOUNTS_URL);
+export default async (router) => {
+  const accountsData = await getAccountsData(ACCOUNTS_URL);
   const { app, mainEl } = createPage();
   const headerPageEl = createHeader(true);
   mount(app, headerPageEl, mainEl);
-  const accountSection = createAccountSection(accountData?.payload);
+  const accountSection = createAccountsSection(accountsData?.payload, router);
   mount(mainEl, accountSection);
 };

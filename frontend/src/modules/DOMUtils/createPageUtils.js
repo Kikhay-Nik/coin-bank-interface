@@ -1,6 +1,7 @@
 // eslint-disable-next-line object-curly-newline
-import { el, mount, unmount, setChildren } from 'redom';
-import createAccountCard from '../pages/accountPage/createAccountCard';
+import { el, mount, unmount, setChildren, text } from 'redom';
+import createAccountCard from '../pages/accountsPage/createAccountCard';
+import { arrowIcon } from './createIcons';
 
 export const createPage = () => {
   document.body.innerHTML = '';
@@ -28,8 +29,29 @@ export const createErrorDisplayEl = () => {
   return errorElem;
 };
 
-export const createWarningDisplayEl = (text, parent) => {
-  const warningElem = el('span.warning-display', text);
+export const createLabelWithInput = (
+  elemClass,
+  labelText,
+  inputPlaceholder,
+  long = true,
+) => {
+  let additionalInputClass;
+  if (long) {
+    additionalInputClass = '.input-long';
+  } else {
+    additionalInputClass = '.input-short';
+  }
+  const label = el(`label.label.${elemClass}-label.flex`, labelText);
+  const input = el(`input.input.${elemClass}-input${additionalInputClass}`, {
+    placeholder: inputPlaceholder,
+  });
+
+  mount(label, input);
+  return { label, input };
+};
+
+export const createWarningDisplayEl = (message, parent) => {
+  const warningElem = el('span.warning-display', message);
   mount(parent, warningElem);
 
   setTimeout(() => {
@@ -38,9 +60,9 @@ export const createWarningDisplayEl = (text, parent) => {
 };
 
 export const createOptionsToSelect = (
-  optionTetx,
-  optionValue,
-  elementClass,
+  optionTetx = '',
+  optionValue = '',
+  elementClass = '',
 ) => {
   const option = el(`option.${elementClass}`, optionTetx, {
     value: optionValue,
@@ -48,7 +70,20 @@ export const createOptionsToSelect = (
   return option;
 };
 
-export const createAccountCards = (data, parent) => {
-  const accounts = data.map((obj) => createAccountCard(obj));
+export const createAccountCards = (data, parent, router) => {
+  const accounts = data.map((obj) => createAccountCard(obj, router));
   setChildren(parent, accounts);
+};
+
+export const createBackButton = (elemClass = '') => {
+  const backButton = el(
+    `button.btn-reset.fill-button.back-button.${elemClass}.flex`,
+  );
+  const buttonText = text('Вернуться назад');
+  const arrowIconEl = arrowIcon;
+  setChildren(backButton, [arrowIconEl, buttonText]);
+  backButton.addEventListener('click', () => {
+    window.history.back();
+  });
+  return backButton;
 };

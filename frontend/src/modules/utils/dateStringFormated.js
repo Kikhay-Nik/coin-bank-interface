@@ -1,11 +1,14 @@
+/* eslint-disable implicit-arrow-linebreak */
+import { DateTime } from 'luxon';
+
 const dateOptions = {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 };
 
-export default (dateString) => {
-  const temp = new Date(dateString).toLocaleString('ru', dateOptions);
-  const result = temp.replace('г.', '');
-  return result;
-};
+export default (dateString) =>
+  DateTime.fromISO(dateString)
+    .setLocale('ru')
+    .toLocaleString(dateOptions)
+    .replace('г.', '');

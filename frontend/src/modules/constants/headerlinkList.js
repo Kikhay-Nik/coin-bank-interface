@@ -5,7 +5,7 @@ export default [
   },
   {
     name: 'Счета',
-    link: '/account',
+    link: '/accounts',
   },
   {
     name: 'Валюта',

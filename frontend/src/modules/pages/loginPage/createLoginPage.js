@@ -7,7 +7,7 @@ import authoriration from './authoriration';
 const createAuthSection = (router) => {
   const authSection = el('section.auth');
   const container = createContainer('auth-container.flex');
-  const authWrapper = el('div.auth-wrapper');
+  const authWrapper = el('div.auth-wrapper.wrapper.wrapper-grey');
   const authTitle = el('h2.auth-title.main-title', 'Вход в аккаунт');
   const authForm = createLoginForm(authoriration, router);
   setChildren(authWrapper, [authTitle, authForm]);
