@@ -68,12 +68,10 @@ export default (maxValue, account) => {
   setChildren(transferFormInner, [accountLabel, amountLabel]);
   setChildren(transferForm, [formTitle, transferFormInner, buttonWrapper]);
   if (accList.length > 0) {
-    const listWrapper = el('div.datalist-wrapper');
     const dataList = el('datalist', { id: 'accounts' });
     const dataOptions = accList.map((acc) => createOptionsToSelect('', acc));
     setChildren(dataList, dataOptions);
-    mount(listWrapper, dataList);
-    mount(transferForm, listWrapper);
+    mount(transferForm, dataList);
   }
 
   const transferInputs = transferForm.querySelectorAll('input');

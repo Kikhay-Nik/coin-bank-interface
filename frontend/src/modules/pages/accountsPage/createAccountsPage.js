@@ -16,7 +16,7 @@ import { ACCOUNTS_URL, CREATE_ACCOUNT_URL } from '../../constants/api';
 import compare from '../../utils/compareFunc';
 import { plusIcon } from '../../DOMUtils/createIcons';
 
-const createAccountsSection = (data, router) => {
+const createAccountsSection = (data) => {
   let accounstData = data;
   const accountSection = el('section.account');
   const container = createContainer('account-container');
@@ -37,7 +37,7 @@ const createAccountsSection = (data, router) => {
   const iconWrapper = el('span.account-icon-wrapper.flex');
 
   const accountList = el('div.account-card-wrapper.grid');
-  createAccountCards(accounstData, accountList, router);
+  createAccountCards(accounstData, accountList);
 
   newAccountButton.addEventListener('click', () => {
     createAccount(CREATE_ACCOUNT_URL).then(async () => {
@@ -70,17 +70,17 @@ const createAccountsSection = (data, router) => {
 
   choices.passedElement.element.addEventListener('choice', (event) => {
     const sortedArr = accounstData.slice().sort(compare(event.detail.value));
-    createAccountCards(sortedArr, accountList, router);
+    createAccountCards(sortedArr, accountList);
   });
 
   return accountSection;
 };
 
-export default async (router) => {
+export default async () => {
   const accountsData = await getAccountsData(ACCOUNTS_URL);
   const { app, mainEl } = createPage();
   const headerPageEl = createHeader(true);
   mount(app, headerPageEl, mainEl);
-  const accountSection = createAccountsSection(accountsData?.payload, router);
+  const accountSection = createAccountsSection(accountsData?.payload);
   mount(mainEl, accountSection);
 };

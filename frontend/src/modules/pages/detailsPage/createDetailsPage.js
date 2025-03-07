@@ -7,8 +7,9 @@ import {
   createBackButton,
 } from '../../DOMUtils/createPageUtils';
 import createTransferForm from './createTransferForm';
+import createBarChart from '../../DOMUtils/createBarChart';
 
-const createDetailsSection = (data, router) => {
+const createDetailsSection = (data) => {
   const detailsSection = el('section.details');
   const container = createContainer('details-container.flex');
   const inner = el('div.details-inner.flex');
@@ -24,13 +25,30 @@ const createDetailsSection = (data, router) => {
   );
   const accountBalanceValue = el(
     'span.details-account-balance-value',
-    `${data.balance} ₽`,
+    `${data.balance.toLocaleString()} ₽`,
   );
 
   const middleInner = el('div.details-middle.flex');
 
   const transferWrapper = el('div.details-transfer.wrapper.wrapper-grey');
   const transferBlock = createTransferForm(data.balance, data.account);
+
+  const balanceDinamicWrapper = el(
+    'div.details-balance-dinamic.balance-dinamic.wrapper.wrapper-light',
+  );
+  const balanceDinamicLink = el('a.balance-dinamic-link', {
+    href: '/account-history',
+  });
+  const balanceDinamicInner = el('div.balance-dinamic-inner');
+  const balanceDinamicTitle = el(
+    'h2.second-title.balance-dinamic-title',
+    'Динамика баланса',
+  );
+  const balanceDinamicCanvas = el(
+    'canvas.balance-dinamic-canvas#detailsBalanceDinamic',
+  );
+  // eslint-disable-next-line no-unused-vars
+  const barChart = createBarChart(balanceDinamicCanvas, data, 6);
 
   setChildren(accountBalanceWrapper, [
     accountBalanceTitle,
@@ -41,7 +59,14 @@ const createDetailsSection = (data, router) => {
   setChildren(inner, [titleAndButtonWrapper, accountInfoWrapper]);
   mount(container, inner);
   mount(transferWrapper, transferBlock);
+  setChildren(balanceDinamicWrapper, [
+    balanceDinamicTitle,
+    balanceDinamicCanvas,
+    balanceDinamicLink,
+  ]);
+  mount(balanceDinamicWrapper, balanceDinamicInner);
   mount(middleInner, transferWrapper);
+  mount(middleInner, balanceDinamicWrapper);
   mount(container, middleInner);
   mount(detailsSection, container);
   return detailsSection;

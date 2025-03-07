@@ -16,15 +16,11 @@ router.on('/accounts', () => {
 
 router.on('/details:id', (data) => {
   const pageId = data.data.id.split(':').pop();
-  createDetailsPage(pageId, router);
+  createDetailsPage(pageId);
+});
+
+router.on('/account-history', () => {
+  console.log('account-history');
 });
 
 router.resolve();
-
-const pagelinks = document.querySelectorAll('a');
-pagelinks.forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    router.navigate(e.currentTarget.pathname);
-  });
-});

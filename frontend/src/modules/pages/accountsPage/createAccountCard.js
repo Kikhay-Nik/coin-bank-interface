@@ -1,14 +1,15 @@
-import { el, setAttr, setChildren } from 'redom';
+import { el, setChildren } from 'redom';
 import dateStringFormated from '../../utils/dateStringFormated';
 
-export default (accountObj, router) => {
+export default (accountObj) => {
   const wrapper = el('div.card.flex');
   const title = el('h3.card-title', accountObj.account);
   const balance = el('span.card-balance', `${accountObj.balance} ₽`);
   const inner = el('div.card-inner.flex');
 
-  const button = el('button.btn-reset.fill-button.card-button', 'Открыть');
-  setAttr(button, { 'data-id': accountObj.account });
+  const button = el('a.btn-reset.fill-button.card-button', 'Открыть', {
+    href: `/details:${accountObj.account}`,
+  });
   if (accountObj.transactions.length) {
     const currentDate = dateStringFormated(accountObj.transactions[0].date);
     const transactionWrapper = el('div.card-transaction');
@@ -24,11 +25,6 @@ export default (accountObj, router) => {
   }
 
   setChildren(wrapper, [title, balance, inner]);
-
-  button.addEventListener('click', (e) => {
-    const accountId = e.currentTarget.dataset.id;
-    router.navigate(`details:${accountId}`);
-  });
 
   return wrapper;
 };

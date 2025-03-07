@@ -70,8 +70,8 @@ export const createOptionsToSelect = (
   return option;
 };
 
-export const createAccountCards = (data, parent, router) => {
-  const accounts = data.map((obj) => createAccountCard(obj, router));
+export const createAccountCards = (data, parent) => {
+  const accounts = data.map((obj) => createAccountCard(obj));
   setChildren(parent, accounts);
 };
 
