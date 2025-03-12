@@ -87,3 +87,44 @@ export const createBackButton = (elemClass = '') => {
   });
   return backButton;
 };
+
+export const createAccountInfoBlock = (data, title) => {
+  const inner = el('div.account-info-inner.flex');
+  const pageTitle = el('h1.main-title.page-title', title);
+  const backLink = createBackButton('account-info-back-button');
+  const titleAndButtonWrapper = el(
+    'div.account-info-title-button-wrapper.flex',
+  );
+  const accountInfoWrapper = el('div.account-info-wrapper.flex');
+  const accountTilte = el('h2.account-info-title', `№ ${data.account}`);
+  const accountBalanceWrapper = el('div.account-info-balance-wrrapper.flex');
+  const accountBalanceTitle = el(
+    'h3.account-info-balance-title.second-title',
+    'Баланс',
+  );
+  const accountBalanceValue = el(
+    'span.account-info-balance-value',
+    `${data.balance.toLocaleString()} ₽`,
+  );
+  setChildren(titleAndButtonWrapper, [pageTitle, backLink]);
+  setChildren(inner, [titleAndButtonWrapper, accountInfoWrapper]);
+  setChildren(accountBalanceWrapper, [
+    accountBalanceTitle,
+    accountBalanceValue,
+  ]);
+  setChildren(accountInfoWrapper, [accountTilte, accountBalanceWrapper]);
+
+  return inner;
+};
+
+export const createBlockWithCanvas = (elemClass, title, canvasId) => {
+  const wrapper = el(`div.${elemClass}.wrapper.wrapper-light`);
+  const titleEl = el(`h2.second-title.${elemClass}-title`, title);
+  const canvasWrapper = el(`div.${elemClass}-canvas-wrapper.canvas-wrapper`);
+  const canvas = el(`canvas.${elemClass}-canvas#${canvasId}`);
+
+  setChildren(wrapper, [titleEl, canvasWrapper]);
+  mount(canvasWrapper, canvas);
+
+  return { wrapper, canvas };
+};

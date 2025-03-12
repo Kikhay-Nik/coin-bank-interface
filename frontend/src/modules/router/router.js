@@ -2,6 +2,7 @@ import Navigo from 'navigo';
 import createLoginPage from '../pages/loginPage/createLoginPage';
 import createAccountsPage from '../pages/accountsPage/createAccountsPage';
 import createDetailsPage from '../pages/detailsPage/createDetailsPage';
+import createHistoryPage from '../pages/accountHistoryPage/createHistoryPage';
 
 const router = new Navigo('/');
 
@@ -19,8 +20,9 @@ router.on('/details:id', (data) => {
   createDetailsPage(pageId);
 });
 
-router.on('/account-history', () => {
-  console.log('account-history');
+router.on('/account-history:id', (data) => {
+  const pageId = data.data.id.split(':').pop();
+  createHistoryPage(pageId);
 });
 
 router.resolve();

@@ -18,6 +18,7 @@ export default (data, monthCount) => {
 
   for (let i = 0; i < transactions.length; i++) {
     const transaction = transactions[transactions.length - i - 1];
+
     const incoming = transaction.to === account;
 
     if (DateTime.fromISO(transaction.date) > beginCurrentMonth) {
@@ -32,16 +33,6 @@ export default (data, monthCount) => {
       if (balanceByMonth.length === monthCount) break;
     }
   }
-  if (balanceByMonth.length !== monthCount) {
-    const emptyMonths = monthCount - balanceByMonth.length;
-    for (let i = 0; i < emptyMonths; i++) {
-      beginCurrentMonth = beginCurrentMonth.minus({ month: 1 });
 
-      balanceByMonth.push({
-        month: months[beginCurrentMonth.month - 1],
-        balance: 0,
-      });
-    }
-  }
   return balanceByMonth.reverse();
 };

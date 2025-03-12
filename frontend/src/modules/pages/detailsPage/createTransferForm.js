@@ -51,6 +51,7 @@ export default (maxValue, account) => {
     type: 'number',
     name: 'transferAmount',
     required: true,
+    step: 0.01,
   });
 
   const buttonWrapper = el('div.transfer-button-wrapper.flex');
@@ -128,9 +129,7 @@ export default (maxValue, account) => {
           input.classList.remove('success');
           input.closest('.label').classList.remove('success');
         });
-        const balanceEl = document.querySelector(
-          '.details-account-balance-value',
-        );
+        const balanceEl = document.querySelector('.account-info-balance-value');
         balanceEl.textContent = `${transferResult.payload.balance} ₽`;
       } else {
         createWarningDisplayEl(
