@@ -7,6 +7,7 @@ import {
 import createBarChart from '../../DOMUtils/createBarChart';
 import balanceDinamicByMonths from '../../utils/balanceDinamicByMonths';
 import transactionsSum from '../../utils/transactionsSum';
+import createHistoryTable from '../../DOMUtils/createHistoryTable';
 
 export default (data) => {
   const monthCount = 12;
@@ -31,7 +32,6 @@ export default (data) => {
     );
 
   const transactionsByperiod = balanceDinamicByMonths(data, monthCount);
-
   createBarChart(
     balanceDinamicCanvas,
     {
@@ -67,11 +67,17 @@ export default (data) => {
     monthCount,
   );
 
+  const historyWrapper = el('div.history-transactions.wrapper.wrapper-grey');
+  const historyBlock = createHistoryTable(data, 'История переводов', 25, true);
+
+  mount(historyWrapper, historyBlock);
   setChildren(historyContainer, [
     topWrapper,
     balanceDinamicWrapper,
     inOutTransactionWrapper,
+    historyWrapper,
   ]);
+
   mount(historySection, historyContainer);
   return historySection;
 };

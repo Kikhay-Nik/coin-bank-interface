@@ -135,6 +135,27 @@ input[type='number'] {
   color: var.$brand-color;
   background-color: var.$light-color;
   border: 2px solid var.$brand-color;
+  transition: background-color, border-color;
+  transition-duration: var.$transition-duration;
+  transition-timing-function: var.$transition-timing-function;
+
+  &:focus-visible,
+  &:hover {
+    border-color: var.$brand-color-light;
+    background-color: var.$secondary-btn-dark;
+    outline: none;
+  }
+
+  &:active {
+    border-color: var.$brand-color;
+    background-color: var.$secondary-btn-light;
+  }
+
+  &:disabled {
+    border-color: var.$border-color;
+    color: var.$border-color;
+    cursor: auto;
+  }
 }
 
 .back-button {

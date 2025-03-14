@@ -11,6 +11,7 @@ import {
 import { envelopeIcon } from '../../DOMUtils/createIcons';
 import { postTransferFunds } from '../../api/apiMethods';
 import { API_TRANSFER_ERRORS } from '../../constants/api';
+import { createDetailsSection } from './createDetailsPage';
 
 export default (maxValue, account) => {
   const localAccountList = localStorage.getItem('accounts');
@@ -55,7 +56,7 @@ export default (maxValue, account) => {
   });
 
   const buttonWrapper = el('div.transfer-button-wrapper.flex');
-  const buttonIcon = envelopeIcon;
+  const buttonIcon = envelopeIcon();
   const button = el(
     'button.btn-reset.fill-button.transfer-button.flex',
     [buttonIcon, 'Отправить'],
@@ -131,6 +132,10 @@ export default (maxValue, account) => {
         });
         const balanceEl = document.querySelector('.account-info-balance-value');
         balanceEl.textContent = `${transferResult.payload.balance} ₽`;
+        // createDetailsPage(transferResult.payload.account);
+        const mainElem = document.querySelector('main');
+        const detailsSection = createDetailsSection(transferResult.payload);
+        setChildren(mainElem, detailsSection);
       } else {
         createWarningDisplayEl(
           API_TRANSFER_ERRORS[transferResult.error],

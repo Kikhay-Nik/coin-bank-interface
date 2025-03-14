@@ -33,7 +33,7 @@ const createAccountsSection = (data) => {
   const newAccountButton = el(
     'button.btn-reset.fill-button.account-button.flex',
   );
-  const plusIconEl = plusIcon;
+  const plusIconEl = plusIcon();
   const iconWrapper = el('span.account-icon-wrapper.flex');
 
   const accountList = el('div.account-card-wrapper.grid');

@@ -80,8 +80,9 @@ export const createBackButton = (elemClass = '') => {
     `button.btn-reset.fill-button.back-button.${elemClass}.flex`,
   );
   const buttonText = text('Вернуться назад');
-  const arrowIconEl = arrowIcon;
-  setChildren(backButton, [arrowIconEl, buttonText]);
+  const arrowIconEl = arrowIcon();
+  mount(backButton, arrowIconEl);
+  mount(backButton, buttonText);
   backButton.addEventListener('click', () => {
     window.history.back();
   });

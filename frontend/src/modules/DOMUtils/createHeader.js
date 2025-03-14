@@ -22,6 +22,9 @@ export default function createHeader(buttons = true) {
       headerLinksEl.forEach((link) => {
         if (link.pathname === currentPath) {
           link.classList.add('active');
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+          });
         }
       }, 0);
     });

@@ -1,4 +1,4 @@
-import { mount, el } from 'redom';
+import { mount, el, setChildren } from 'redom';
 import { getAccountById } from '../../api/apiMethods';
 import createHeader from '../../DOMUtils/createHeader';
 import {
@@ -10,8 +10,9 @@ import {
 import createTransferForm from './createTransferForm';
 import createBarChart from '../../DOMUtils/createBarChart';
 import balanceDinamicByMonths from '../../utils/balanceDinamicByMonths';
+import createHistoryTable from '../../DOMUtils/createHistoryTable';
 
-const createDetailsSection = (data) => {
+export const createDetailsSection = (data) => {
   const monthCount = 6;
   const detailsSection = el('section.details');
   const container = createContainer('details-container.flex');
@@ -48,22 +49,28 @@ const createDetailsSection = (data) => {
     monthCount,
   );
 
+  const historyWrapper = el('div.details-history.wrapper.wrapper-grey');
+  const historyBlock = createHistoryTable(data, 'История переводов', 10);
+  const historyTableLink = el('a.details-history-link', {
+    href: `/account-history:${data.account}`,
+  });
+
   mount(container, topWrapper);
   mount(transferWrapper, transferBlock);
   mount(balanceDinamicWrapper, balanceDinamicLink);
-  mount(middleInner, transferWrapper);
-  mount(middleInner, balanceDinamicWrapper);
+  setChildren(middleInner, [transferWrapper, balanceDinamicWrapper]);
   mount(container, middleInner);
-
+  setChildren(historyWrapper, [historyBlock, historyTableLink]);
+  mount(container, historyWrapper);
   mount(detailsSection, container);
   return detailsSection;
 };
 
-export default async (id, router) => {
+export default async (id) => {
   const accountsData = await getAccountById(id);
   const { app, mainEl } = createPage();
   const headerPageEl = createHeader(true);
   mount(app, headerPageEl, mainEl);
-  const detailsSection = createDetailsSection(accountsData.payload, router);
+  const detailsSection = createDetailsSection(accountsData.payload);
   mount(mainEl, detailsSection);
 };
