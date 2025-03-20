@@ -34,6 +34,7 @@ export const createLabelWithInput = (
   labelText,
   inputPlaceholder,
   long = true,
+  inputType = 'input',
 ) => {
   let additionalInputClass;
   if (long) {
@@ -42,9 +43,12 @@ export const createLabelWithInput = (
     additionalInputClass = '.input-short';
   }
   const label = el(`label.label.${elemClass}-label.flex`, labelText);
-  const input = el(`input.input.${elemClass}-input${additionalInputClass}`, {
-    placeholder: inputPlaceholder,
-  });
+  const input = el(
+    `${inputType}.input.${elemClass}-input${additionalInputClass}`,
+    {
+      placeholder: inputPlaceholder,
+    },
+  );
 
   mount(label, input);
   return { label, input };

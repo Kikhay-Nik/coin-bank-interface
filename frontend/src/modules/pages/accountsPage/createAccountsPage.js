@@ -55,7 +55,6 @@ const createAccountsSection = (data) => {
   mount(container, accountList);
   mount(accountSection, container);
 
-  // eslint-disable-next-line no-unused-vars
   const choices = new Choices(sortSelect, {
     allowHTML: false,
     searchEnabled: false,

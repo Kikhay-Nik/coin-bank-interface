@@ -49,3 +49,35 @@ export const envelopeIcon = () =>
       fill: 'currentColor',
     }),
   );
+
+export const topArrow = () =>
+  svg(
+    'svg',
+    {
+      width: '20',
+      height: '10',
+      viewBox: '0 0 20 10',
+      fill: 'none',
+      xmlns: 'http://www.w3.org/2000/svg',
+    },
+    svg('path', {
+      d: 'M20 10L10 0L0 10L20 10Z',
+      fill: 'currentColor',
+    }),
+  );
+
+export const downArrow = () =>
+  svg(
+    'svg',
+    {
+      width: '20',
+      height: '10',
+      viewBox: '0 0 20 10',
+      fill: 'none',
+      xmlns: 'http://www.w3.org/2000/svg',
+    },
+    svg('path', {
+      d: 'M0 0L10 10L20 0H0Z',
+      fill: 'currentColor',
+    }),
+  );

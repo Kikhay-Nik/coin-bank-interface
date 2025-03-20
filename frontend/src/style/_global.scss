@@ -99,6 +99,10 @@ input[type='number'] {
   padding: 25px 50px;
   border-radius: var.$sections-border-radius;
 
+  &-dark {
+    background-color: var.$bg-dark-color;
+  }
+
   &-grey {
     background-color: var.$bg-light-color;
   }

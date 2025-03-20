@@ -4,6 +4,11 @@ export const ACCOUNTS_URL = `${MAIN_URL}/accounts`;
 export const CREATE_ACCOUNT_URL = `${MAIN_URL}/create-account`;
 export const GET_ACCOUNT_INFO_URL = `${MAIN_URL}/account`;
 export const TRANSFER_FUNDS_URL = `${MAIN_URL}/transfer-funds`;
+export const ACCOUNT_CURRENCY_URL = `${MAIN_URL}/currencies`;
+export const ALL_CURRENCY_URL = `${MAIN_URL}/all-currencies`;
+export const TRANSFER_CURRENCY_URL = `${MAIN_URL}/currency-buy`;
+export const EXCHANGE_FEED_URL = `${MAIN_URL}/currency-feed`;
+
 export const API_LOGIN_ERRORS = {
   'No such user': 'Пользователь не найден',
   'Invalid password': 'Неверный пароль',
