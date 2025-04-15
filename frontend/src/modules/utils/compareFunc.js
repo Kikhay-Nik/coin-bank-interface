@@ -1,7 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable default-case */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable implicit-arrow-linebreak */
 export default function compare(field) {
   return (a, b) => {
     const sortedVal = field.split('.');
@@ -12,8 +8,19 @@ export default function compare(field) {
     }
     if (len === 2) {
       const nestedArr = sortedVal[i];
-      const currentValA = a[nestedArr][0][sortedVal[1]];
-      const currentValB = b[nestedArr][0][sortedVal[1]];
+      let currentValA;
+      let currentValB;
+      if (a[nestedArr][0]) {
+        currentValA = a[nestedArr][0][sortedVal[1]];
+      } else {
+        currentValA = 0;
+      }
+
+      if (b[nestedArr][0]) {
+        currentValB = b[nestedArr][0][sortedVal[1]];
+      } else {
+        currentValB = 0;
+      }
       return (
         (currentValA < currentValB && -1) ||
         (currentValA > currentValB && 1) ||

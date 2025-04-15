@@ -69,6 +69,10 @@ const createAccountsSection = (data) => {
 
   choices.passedElement.element.addEventListener('choice', (event) => {
     const sortedArr = accounstData.slice().sort(compare(event.detail.value));
+    console.log(
+      '🚀 ~ choices.passedElement.element.addEventListener ~ sortedArr:',
+      sortedArr,
+    );
     createAccountCards(sortedArr, accountList);
   });
 

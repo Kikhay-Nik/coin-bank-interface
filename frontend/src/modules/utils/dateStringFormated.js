@@ -10,5 +10,6 @@ export default (dateString, monthFormat = 'long') => {
   return DateTime.fromISO(dateString)
     .setLocale('ru')
     .toLocaleString(dateOptions)
-    .replace('г.', '');
+    .replace('г.', '')
+    .trim();
 };

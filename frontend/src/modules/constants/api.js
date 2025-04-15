@@ -8,6 +8,7 @@ export const ACCOUNT_CURRENCY_URL = `${MAIN_URL}/currencies`;
 export const ALL_CURRENCY_URL = `${MAIN_URL}/all-currencies`;
 export const TRANSFER_CURRENCY_URL = `${MAIN_URL}/currency-buy`;
 export const EXCHANGE_FEED_URL = `${MAIN_URL}/currency-feed`;
+export const ATMS_URL = `${MAIN_URL}/banks`;
 
 export const API_LOGIN_ERRORS = {
   'No such user': 'Пользователь не найден',

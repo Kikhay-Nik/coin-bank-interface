@@ -1,6 +1,6 @@
-import stringValidate from './validateLoginForm';
+import stringValidate from '../utils/validateLoginForm';
 
-export default function inputValidate(input, button) {
+export default (input, button) => {
   const parentLabel = input.closest('label');
   const currentValue = input.value.trim();
   const { valid, error } = stringValidate(currentValue);
@@ -14,4 +14,4 @@ export default function inputValidate(input, button) {
     parentLabel.classList.add('success');
     button.disabled = false;
   }
-}
+};

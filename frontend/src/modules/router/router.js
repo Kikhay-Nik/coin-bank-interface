@@ -4,6 +4,7 @@ import createAccountsPage from '../pages/accountsPage/createAccountsPage';
 import createDetailsPage from '../pages/detailsPage/createDetailsPage';
 import createHistoryPage from '../pages/accountHistoryPage/createHistoryPage';
 import createCurrencyPage from '../pages/currencyPage/createCurrencyPage';
+import createAtmPage from '../pages/atmPage/createAtmPage';
 
 const router = new Navigo('/');
 
@@ -28,6 +29,10 @@ router.on('/account-history:id', (data) => {
 
 router.on('/currency', () => {
   createCurrencyPage();
+});
+
+router.on('/atms', () => {
+  createAtmPage();
 });
 
 router.resolve();

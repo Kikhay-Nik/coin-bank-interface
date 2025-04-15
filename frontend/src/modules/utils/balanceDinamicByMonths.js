@@ -7,12 +7,13 @@ export default (data, monthCount) => {
   const now = DateTime.now();
   const currentYear = now.year;
   const currentMonth = now.month;
+
   let beginCurrentMonth = DateTime.local(currentYear, currentMonth, 1);
 
   const balanceByMonth = [
     {
       month: months[currentMonth - 1],
-      balance: balance || 0,
+      balance: balance,
     },
   ];
 
@@ -27,8 +28,11 @@ export default (data, monthCount) => {
       beginCurrentMonth = beginCurrentMonth.minus({ month: 1 });
       balanceByMonth.push({
         month: months[beginCurrentMonth.month - 1],
-        balance: balance || 0,
+        balance: Number(balance.toFixed(2)),
       });
+      if (DateTime.fromISO(transaction.date) > beginCurrentMonth) {
+        balance -= incoming ? transaction.amount : -transaction.amount;
+      }
 
       if (balanceByMonth.length === monthCount) break;
     }

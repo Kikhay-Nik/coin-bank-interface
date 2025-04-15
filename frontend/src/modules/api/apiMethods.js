@@ -4,6 +4,7 @@ import {
   TRANSFER_FUNDS_URL,
   ALL_CURRENCY_URL,
   TRANSFER_CURRENCY_URL,
+  ATMS_URL,
 } from '../constants/api';
 
 export const getAccountsData = async (url) => {
@@ -145,6 +146,25 @@ export const postTransferCurrency = async (from, to, amount) => {
       },
     });
 
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getAtmsData = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('Пользователь неавторизован');
+  }
+  try {
+    const response = await fetch(ATMS_URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${token}`,
+      },
+    });
     return await response.json();
   } catch (error) {
     return error;

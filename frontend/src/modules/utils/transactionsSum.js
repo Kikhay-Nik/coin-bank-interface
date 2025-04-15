@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon';
 import months from '../constants/months';
+
 // Вычисление сумм входящих/исходящих транзакций за последние month месяцев
 export default (account, monthsCount) => {
   const id = account.account;

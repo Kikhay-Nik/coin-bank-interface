@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
-const devtool = devMode ? 'source-map' : undefined;
+const devtool = devMode ? 'cheap-source-map' : undefined;
 
 module.exports = {
   mode,
@@ -22,6 +22,13 @@ module.exports = {
     clean: true,
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[hash][ext]',
+  },
+  externalsType: 'script',
+  externals: {
+    ymaps3: [
+      'https://api-maps.yandex.ru/v3/?apikey=e19e074e-c886-4cf8-9c20-ef3ddd518b21&lang=ru_RU',
+      'ymaps3',
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
