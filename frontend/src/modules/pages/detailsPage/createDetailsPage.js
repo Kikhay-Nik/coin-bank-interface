@@ -16,7 +16,7 @@ export const createDetailsSection = (data) => {
   const monthCount = 6;
   const detailsSection = el('section.details');
   const container = createContainer('details-container.flex');
-  const topWrapper = createAccountInfoBlock(data, 'Просмотр счёта ');
+  const topWrapper = createAccountInfoBlock(data, 'Просмотр счёта');
   const middleInner = el('div.details-middle.flex');
 
   const transferWrapper = el('div.details-transfer.wrapper.wrapper-grey');

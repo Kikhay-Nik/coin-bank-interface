@@ -10,7 +10,12 @@ export default function createHeader(buttons = true) {
   const headerContainerEl = createContainer('header-container.flex');
   const headerLogoEl = el('div.logo', 'Coin.');
   const headerLinksEl = headerlinkList.map((link) =>
-    createLink(link.link, link.name, '.btn-reset.header-button.stroke-button'),
+    createLink(
+      link.link,
+      link.name,
+      '.btn-reset.header-button.stroke-button',
+      link.testAttr,
+    ),
   );
 
   if (buttons) {

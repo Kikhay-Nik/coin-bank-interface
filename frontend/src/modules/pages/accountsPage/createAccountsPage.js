@@ -32,6 +32,9 @@ const createAccountsSection = (data) => {
   );
   const newAccountButton = el(
     'button.btn-reset.fill-button.account-button.flex',
+    {
+      'data-test': 'new-account-button',
+    },
   );
   const plusIconEl = plusIcon();
   const iconWrapper = el('span.account-icon-wrapper.flex');
@@ -69,10 +72,6 @@ const createAccountsSection = (data) => {
 
   choices.passedElement.element.addEventListener('choice', (event) => {
     const sortedArr = accounstData.slice().sort(compare(event.detail.value));
-    console.log(
-      '🚀 ~ choices.passedElement.element.addEventListener ~ sortedArr:',
-      sortedArr,
-    );
     createAccountCards(sortedArr, accountList);
   });
 

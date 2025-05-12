@@ -18,8 +18,13 @@ export const createContainer = (optionalClass = '') => {
   return containerEl;
 };
 
-export const createLink = (url, elemText, elemClass) => {
-  const linkEl = el(`a.${elemClass}`, elemText, { href: url });
+export const createLink = (url, elemText, elemClass, testAttr) => {
+  const linkEl = el(
+    `a.${elemClass}`,
+    elemText,
+    { href: url },
+    { 'data-test': testAttr },
+  );
 
   return linkEl;
 };
@@ -82,6 +87,9 @@ export const createAccountCards = (data, parent) => {
 export const createBackButton = (elemClass = '') => {
   const backButton = el(
     `button.btn-reset.fill-button.back-button.${elemClass}.flex`,
+    {
+      'data-test': 'back-page-button',
+    },
   );
   const buttonText = text('Вернуться назад');
   const arrowIconEl = arrowIcon();

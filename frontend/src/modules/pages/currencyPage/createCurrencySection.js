@@ -13,7 +13,9 @@ export default async (data) => {
   const rightinner = el('div.currency-right.flex');
   const contentWrapper = el('div.currency-content.flex');
 
-  const currentCurrency = el('div.currency-current.wrapper.wrapper-light');
+  const currentCurrency = el('div.currency-current.wrapper.wrapper-light', {
+    'data-test': 'current-currency',
+  });
   const currentCurrencyinner = createCurrentCurrency(data);
   mount(currentCurrency, currentCurrencyinner);
   mount(leftInner, currentCurrency);

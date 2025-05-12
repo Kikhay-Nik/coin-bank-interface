@@ -17,12 +17,16 @@ export default (maxValue, account) => {
   const localAccountList = localStorage.getItem('accounts');
   let accList;
   if (!localAccountList) {
-    accList = [];
+    accList = ['61253747452820828268825011'];
   } else {
     accList = JSON.parse(localAccountList);
   }
-  const transferForm = el('form.transfer-form.flex');
-  const formTitle = el('h2.transfer-title.second-title', 'Новый перевод');
+  const transferForm = el('form.transfer-form.flex', {
+    'data-test': 'transfer-form',
+  });
+  const formTitle = el('h2.transfer-title.second-title', 'Новый перевод', {
+    'data-test': 'transfer-title',
+  });
   const transferFormInner = el('div.transfer-form-inner.flex');
 
   const { label: accountLabel, input: accountInput } = createLabelWithInput(
@@ -39,6 +43,7 @@ export default (maxValue, account) => {
     name: 'accountNumber',
     list: 'accounts',
     required: true,
+    'data-test': 'transfer-account',
   });
   const { label: amountLabel, input: amountInput } = createLabelWithInput(
     'transfer',
@@ -53,6 +58,7 @@ export default (maxValue, account) => {
     name: 'transferAmount',
     required: true,
     step: 0.01,
+    'data-test': 'transfer-amount',
   });
 
   const buttonWrapper = el('div.transfer-button-wrapper.flex');
@@ -62,8 +68,25 @@ export default (maxValue, account) => {
     [buttonIcon, 'Отправить'],
     {
       type: 'submit',
+      'data-test': 'transfer-button',
     },
   );
+
+  button.addEventListener('click', () => {
+    const form = button.closest('form');
+
+    const inputs = form.querySelectorAll('input');
+    inputs.forEach((input) => {
+      const parentLabel = input.closest('label');
+      const errorDisplay = parentLabel.querySelector('.error-display');
+      if (!input.value.trim()) {
+        parentLabel.classList.add('error');
+        errorDisplay.textContent = 'Обязательное поле';
+      }
+    });
+  });
+
+  if (maxValue === 0) button.disabled = true;
 
   mount(buttonWrapper, button);
 

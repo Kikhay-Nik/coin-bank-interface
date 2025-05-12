@@ -52,7 +52,7 @@ export default (canvas, data, labelCount) => {
 
   let yMin;
   const maxVal = [];
-  // Вычисление min,middle, max значений для шкалы Н
+  // Вычисление min,middle, max значений для шкалы Y
   for (let i = 0; i < data.datasets.length; i++) {
     const element = data.datasets[i];
     const max = Math.max(...element.data);

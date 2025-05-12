@@ -17,6 +17,7 @@ export default function createLoginForm(submitHandler, router) {
     name: 'username',
     autocomplete: 'username',
     required: '',
+    'data-test': 'username-input',
   });
   const passwordInput = el('input.auth-input.input.input-long', {
     placeholder: 'Введите пароль',
@@ -25,11 +26,13 @@ export default function createLoginForm(submitHandler, router) {
     name: 'password',
     autocomplete: 'current-password',
     required: '',
+    'data-test': 'password-input',
   });
 
   const buttonWrapper = el('div.auth-button-wrapper');
   const button = el('button.btn-reset.fill-button.auth-button', 'Войти', {
     type: 'submit',
+    'data-test': 'auth-button',
   });
 
   mount(buttonWrapper, button);
