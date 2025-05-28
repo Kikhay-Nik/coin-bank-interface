@@ -105,10 +105,8 @@ export const createAccountInfoBlock = (data, title) => {
   const inner = el('div.account-info-inner.flex');
   const pageTitle = el('h1.main-title.page-title', title);
   const backLink = createBackButton('account-info-back-button');
-  const titleAndButtonWrapper = el(
-    'div.account-info-title-button-wrapper.flex',
-  );
-  const accountInfoWrapper = el('div.account-info-wrapper.flex');
+  const titleAndButtonWrapper = el('div.center-between.flex');
+  const accountInfoWrapper = el('div.center-between.flex');
   const accountTilte = el('h2.account-info-title', `№ ${data.account}`);
   const accountBalanceWrapper = el('div.account-info-balance-wrrapper.flex');
   const accountBalanceTitle = el(

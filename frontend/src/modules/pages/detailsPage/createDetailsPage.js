@@ -11,6 +11,7 @@ import createTransferForm from './createTransferForm';
 import createBarChart from '../../DOMUtils/createBarChart';
 import balanceDinamicByMonths from '../../utils/balanceDinamicByMonths';
 import createHistoryTable from '../../DOMUtils/createHistoryTable';
+import createSkeletonDetailsPage from './createSkeletonDetailsPage';
 
 export const createDetailsSection = (data) => {
   const monthCount = 6;
@@ -67,10 +68,12 @@ export const createDetailsSection = (data) => {
 };
 
 export default async (id) => {
-  const accountsData = await getAccountById(id);
   const { app, mainEl } = createPage();
   const headerPageEl = createHeader(true);
   mount(app, headerPageEl, mainEl);
+  const skeleton = createSkeletonDetailsPage();
+  mount(mainEl, skeleton);
+  const accountsData = await getAccountById(id);
   const detailsSection = createDetailsSection(accountsData.payload);
-  mount(mainEl, detailsSection);
+  setChildren(mainEl, [detailsSection]);
 };

@@ -34,5 +34,6 @@ test('Функция корректно считает суммы входящи
     { month: 'фев', income: 100, outcome: 0 },
     { month: 'мар', income: 0, outcome: 20 },
     { month: 'апр', income: 0, outcome: 20 },
+    { month: 'май', income: 0, outcome: 0 },
   ]);
 });

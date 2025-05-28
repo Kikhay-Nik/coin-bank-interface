@@ -32,7 +32,8 @@ describe('Страница обмена валют', () => {
         .children('h2')
         .should('exist')
         .should('have.text', 'Ваши валюты');
-      cy.get('dl.current-currency-list').should('have.length', );
+      cy.wait(1000);
+      cy.get('dl.current-currency-list').should('have.length.greaterThan', 0);
     });
   });
 });

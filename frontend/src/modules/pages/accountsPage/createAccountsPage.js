@@ -15,6 +15,7 @@ import { createAccount, getAccountsData } from '../../api/apiMethods';
 import { ACCOUNTS_URL, CREATE_ACCOUNT_URL } from '../../constants/api';
 import compare from '../../utils/compareFunc';
 import { plusIcon } from '../../DOMUtils/createIcons';
+import createSkeletonAccountsPage from './createSkeletonAccountsPage';
 
 const createAccountsSection = (data) => {
   let accounstData = data;
@@ -79,10 +80,12 @@ const createAccountsSection = (data) => {
 };
 
 export default async () => {
-  const accountsData = await getAccountsData(ACCOUNTS_URL);
   const { app, mainEl } = createPage();
   const headerPageEl = createHeader(true);
   mount(app, headerPageEl, mainEl);
+  const skeleton = createSkeletonAccountsPage();
+  mount(mainEl, skeleton);
+  const accountsData = await getAccountsData(ACCOUNTS_URL);
   const accountSection = createAccountsSection(accountsData?.payload);
-  mount(mainEl, accountSection);
+  setChildren(mainEl, [accountSection]);
 };

@@ -233,16 +233,6 @@
     width: 100%;
   }
 
-  &-title-button-wrapper {
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &-wrapper {
-    align-items: center;
-    justify-content: space-between;
-  }
-
   &-title {
     margin: 0;
     font-family:
@@ -285,6 +275,7 @@
   }
 
   &-transfer {
+    width: 100%;
     max-width: 606px;
   }
 
@@ -770,5 +761,440 @@
     opacity: 0;
     padding: 4px 0;
     transform: translateY(4px);
+  }
+}
+
+.skeleton {
+  background-color: #f2f2f2;
+  box-shadow: 0 -200px 100px -120px #e5eaf0 inset;
+  animation: animateBackground 2s ease-in-out infinite alternate;
+  border-radius: var.$min-border-radius;
+  cursor: auto;
+
+  @keyframes animateBackground {
+    50% {
+      box-shadow: 0 -200px 100px -100px var.$accent-color inset;
+    }
+  }
+
+  &-account {
+    &-title {
+      width: 204px;
+      height: 40px;
+    }
+
+    &-input {
+      height: 44px;
+      padding: 16px 10px;
+      margin-left: 35px;
+      outline: 1px solid var.$accent-color;
+      border-radius: var.$min-border-radius;
+
+      &-placeholder {
+        width: 92px;
+        height: 24px;
+      }
+
+      & svg {
+        margin-right: 6px;
+        color: var.$accent-color;
+      }
+    }
+
+    &-button {
+      width: 234px;
+      height: 52px;
+      margin-left: auto;
+    }
+  }
+
+  &-card {
+    width: 400px;
+    height: 156px;
+
+    &-number {
+      width: 266px;
+      height: 22px;
+    }
+
+    &-balance {
+      width: 78px;
+      height: 20px;
+    }
+
+    &-transaction {
+      flex-direction: column;
+    }
+
+    &-transaction-description {
+      width: 156px;
+      height: 15px;
+      margin-bottom: 2px;
+    }
+
+    &-transaction-date {
+      width: 77px;
+      height: 15px;
+    }
+
+    &-button {
+      width: 110px;
+      height: 52px;
+    }
+  }
+
+  &-top {
+    &-title {
+      height: 40px;
+    }
+
+    &-button {
+      width: 209px;
+      height: 52px;
+    }
+
+    &-account {
+      width: 554px;
+      height: 40px;
+    }
+
+    &-balance {
+      width: 201px;
+      height: 23px;
+    }
+  }
+
+  &-details {
+    padding-top: 50px;
+
+    &-title {
+      width: 275px;
+    }
+  }
+
+  &-transfer {
+    &-title {
+      width: 161px;
+      height: 23px;
+    }
+
+    &-row-end {
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    &-top-label {
+      width: 188px;
+      height: 20px;
+    }
+
+    &-bottom-label {
+      width: 127px;
+      height: 20px;
+    }
+
+    &-input {
+      align-items: center;
+      height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var.$accent-color;
+      border-radius: var.$min-border-radius;
+    }
+
+    &-top-input-text {
+      width: 94px;
+      height: 16px;
+    }
+
+    &-bottom-input-text {
+      width: 100px;
+      height: 16px;
+    }
+
+    &-button {
+      width: 164px;
+      height: 52px;
+      margin: 0 auto;
+    }
+  }
+
+  &-dinamic {
+    &-title {
+      width: 196px;
+      height: 23px;
+      margin-bottom: 25px;
+    }
+
+    &-chart-wrapper {
+      margin-bottom: 10px;
+    }
+
+    &-chart {
+      width: 100%;
+      height: 165px;
+      padding: 0 35px;
+      margin-right: 24px;
+      gap: 28px;
+      align-items: flex-end;
+      border: 1px solid var.$accent-color;
+    }
+
+    &-bar {
+      width: 50px;
+    }
+
+    &-amounts {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-amount {
+      width: 50px;
+      height: 23px;
+    }
+
+    &-months-wrapper {
+      max-width: 509px;
+      padding: 0 42px;
+      gap: 36px;
+    }
+
+    &-month {
+      width: 40px;
+      height: 23px;
+    }
+  }
+
+  &-history-table {
+    &-title {
+      width: 200px;
+      height: 23px;
+      margin-bottom: 25px;
+    }
+
+    &-header {
+      height: 64px;
+      padding: 20px 50px;
+      border-radius: 15px;
+      background-color: var.$secondary-btn-dark;
+    }
+
+    &-header-title {
+      &-1 {
+        width: 170px;
+        margin-right: 260px;
+      }
+      &-2 {
+        width: 160px;
+        margin-right: 236px;
+      }
+      &-3 {
+        width: 65px;
+        margin-right: 80px;
+      }
+      &-4 {
+        width: 45px;
+        margin-right: 120px;
+      }
+    }
+
+    &-history {
+      flex-direction: column;
+      padding: 0 50px;
+    }
+
+    &-history-item {
+      padding-top: 21px;
+      padding-bottom: 26px;
+    }
+
+    &-text {
+      height: 24px;
+    }
+
+    &-from {
+      width: 231px;
+      margin-right: 200px;
+    }
+    &-to {
+      width: 231px;
+      margin-right: 166px;
+    }
+    &-amount {
+      width: 65px;
+      margin-right: 77px;
+    }
+    &-date {
+      width: 80px;
+      margin-right: 89px;
+    }
+  }
+
+  &-history {
+    &-title {
+      width: 296px;
+    }
+
+    &-inner {
+      flex-direction: column;
+    }
+
+    & .skeleton-dinamic-chart {
+      max-width: 1000px;
+      padding: 0 46px;
+      margin-right: 46px;
+    }
+
+    & .skeleton-dinamic-months-wrapper {
+      max-width: 1000px;
+      padding: 0 52px;
+    }
+  }
+
+  &-in-out-transactions-title {
+    width: 500px;
+  }
+
+  &-currency {
+    &-title {
+      width: 304px;
+      height: 40px;
+      margin-bottom: 44px;
+    }
+
+    &-inner {
+      gap: 58px;
+    }
+
+    &-form-wrapper {
+      flex-direction: column;
+      gap: 58px;
+      width: 100%;
+      max-width: 588px;
+    }
+
+    &-current {
+      flex-direction: column;
+      gap: 25px;
+      padding: 50px;
+
+      &-title {
+        width: 144px;
+        height: 23px;
+      }
+    }
+
+    &-item {
+      align-items: baseline;
+      padding-right: 24px;
+    }
+
+    &-name {
+      width: 44px;
+      height: 23px;
+
+      &-exchange {
+        width: 101px;
+        height: 23px;
+      }
+    }
+
+    &-line {
+      width: 100%;
+      height: 2px;
+    }
+
+    &-amount {
+      width: 146px;
+      height: 23px;
+    }
+
+    &-form {
+      align-items: flex-end;
+      gap: 25px;
+      padding: 50px;
+
+      &-inner {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      &-title {
+        width: 155px;
+        height: 23px;
+      }
+
+      &-inputs {
+        gap: 20px;
+      }
+
+      &-from {
+        width: 20px;
+        height: 20px;
+      }
+
+      &-to {
+        width: 10px;
+        height: 20px;
+      }
+
+      &-input {
+        position: relative;
+        width: 134px;
+        padding: 10px 16px;
+        outline: 1px solid var.$accent-color;
+        border-radius: var.$min-border-radius;
+        color: var.$accent-color;
+      }
+
+      &-currency-name {
+        width: 30px;
+        height: 24px;
+      }
+
+      &-amount-wrapper {
+        align-items: center;
+        gap: 8px;
+      }
+
+      &-amount-label {
+        width: 50px;
+        height: 20px;
+      }
+
+      &-amount-input {
+        padding: 10px 16px;
+        outline: 1px solid var.$accent-color;
+        border-radius: var.$min-border-radius;
+      }
+
+      &-amount-placeholder {
+        width: 75px;
+        height: 24px;
+      }
+
+      &-button {
+        width: 104px;
+        height: 113px;
+      }
+    }
+    &-exchange {
+      &-rate {
+        flex-direction: column;
+        gap: 25px;
+
+        & .skeleton-currency-item svg {
+          margin-left: 4px;
+          color: var.$accent-color;
+          transform: translateY(-7px);
+        }
+      }
+
+      &-title {
+        width: 412px;
+        height: 23px;
+      }
+    }
   }
 }

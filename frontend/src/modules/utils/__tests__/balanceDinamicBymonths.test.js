@@ -34,5 +34,6 @@ test('функция верно расчитывает динамику бала
     { month: 'фев', balance: 100 },
     { month: 'мар', balance: 80 },
     { month: 'апр', balance: 60 },
+    { month: 'май', balance: 60 },
   ]);
 });

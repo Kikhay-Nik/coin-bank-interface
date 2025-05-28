@@ -90,6 +90,11 @@ input[type='number'] {
   display: flex;
 }
 
+.center-between {
+  align-items: center;
+  justify-content: space-between;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
